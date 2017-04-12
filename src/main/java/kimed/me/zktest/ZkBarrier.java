@@ -13,9 +13,9 @@ import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.data.Stat;
 
 public class ZkBarrier {
-	static final int size = 100;
+	static final int size = 180;
 	static final String root = "/barrier";
-	static ZooKeeper zk = null;
+	ZooKeeper zk = null;//can remove static keyword,then create @size tcp connections to zk hosts.
 	Integer mutex;
 	String nodeName;
 
@@ -122,7 +122,7 @@ public class ZkBarrier {
 				}
 			}
 			try {
-				Thread.sleep(100000);
+				Thread.sleep(10000000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
